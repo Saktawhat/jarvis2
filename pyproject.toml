@@ -9,6 +9,7 @@ dependencies = [
     "ollama>=0.6.1",
     "openai>=2.32.0",
     "openai-whisper>=20250625",
+    "openwakeword>=0.4.0",
     "pydub>=0.25.1",
     "pytest>=9.0.3",
     "scipy>=1.17.1",
