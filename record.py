@@ -12,20 +12,18 @@ CHUNKSIZE = 1024
 #Download model (Leave empty for all models)
 model = Model(wakeword_model_paths=["/run/media/whatdafaq/Cachy2/projects/jarvis2/hey_jarvis_v0.1.onnx"])
 
-def callback(indata, outdata, frames, time, status):
+def callback(indata, frames, time, status):
     if status:
         print(status)
-    outdata[:] = indata
 
 
 # Stream opened
-with sd.Stream(channels=1, callback=callback,samplerate=RATE,dtype='int16',blocksize=CHUNKSIZE):
+with sd.InputStream(channels=1, callback=callback,samplerate=RATE,dtype='int16',blocksize=CHUNKSIZE):
     print("streaming...")
     sd.sleep(int(duration * 1000))
 
 if __name__ == "__main__":
     while True:
         audio = np.frombuffer(sd.Stream.read(1280), dtype='int16')
-
         prediction = model.predict(audio)
         print(prediction)
