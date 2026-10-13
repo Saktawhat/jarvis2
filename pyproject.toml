@@ -3,19 +3,22 @@ name = "jarvis2"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.11"
 dependencies = [
     "numpy>=2.4.4",
     "ollama>=0.6.1",
+    "onnxruntime-gpu>=1.31.0",
     "openai>=2.32.0",
     "openai-whisper>=20250625",
     "openwakeword>=0.4.0",
+    "pyaudio>=0.2.14",
     "pydub>=0.25.1",
     "pytest>=9.0.3",
     "scipy>=1.17.1",
     "silero-vad>=6.2.1",
     "sounddevice>=0.5.5",
     "speechrecognition>=3.16.1",
+    "torch>=2.14.1",
     "torchaudio>=2.11.0",
     "torchcodec>=0.11.1",
 ]

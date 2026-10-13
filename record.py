@@ -1,5 +1,5 @@
-import pyaudio
 import numpy as np
+import torch # onnxruntime stupid as shit cant find CUDA path so torch is needed LOL
 import sounddevice as sd
 import openwakeword
 from openwakeword.model import Model
