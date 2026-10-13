@@ -23,7 +23,7 @@ with sd.InputStream(channels=1, callback=callback,samplerate=RATE,dtype='int16',
     sd.sleep(int(duration * 1000))
 
 if __name__ == "__main__":
-    while True:
-        audio = np.frombuffer(sd.Stream.read(1280), dtype='int16')
+    while True: # to be fixed.. stream opened and pass audio chunk to predict
+        audio = np.frombuffer(sd.Stream.read(CHUNKSIZE), dtype='int16')
         prediction = model.predict(audio)
         print(prediction)
