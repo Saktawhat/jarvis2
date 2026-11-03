@@ -1,19 +1,14 @@
-"""
-    Predict wakeword using ONNX models
-"""
 import numpy as np
-import torch # onnxruntime stupid as shit cant find CUDA path so torch is needed LOL
+import edgetest as ei
 import sounddevice as sd
-import openwakeword
-from openwakeword.model import Model
 
+# CONF
 WAKE_THRESHOLD = 0.30
 RATE=16000
 CHUNKSIZE = 1280
 WAKEWORD = "./wakeword.onnx"
 
-#Download model (Leave empty for all models)
-model = Model(wakeword_model_paths=[WAKEWORD])
+ei.API_KEY = "ei_ce824ae2b29c2058294c8b38cee3d3d1c6c7d8592b2020ad"
 
 def callback(indata, frames, time, status):
     if status:
@@ -21,12 +16,7 @@ def callback(indata, frames, time, status):
         return
 
     audio_data = indata[:, 0].copy()
-    prediction = model.predict(audio_data)
 
-    print("Detecting...", prediction)
-    for name, score in prediction.items():
-        if score >= WAKE_THRESHOLD:
-            print(f"wakeword detected: {name} ({score:.2f})")
 
 
 def inpstream():

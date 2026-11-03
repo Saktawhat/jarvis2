@@ -43,9 +43,5 @@ Provide a helpful answer:"""
 
 
 if __name__ == "__main__":
-    # audio_file = record.record_audio() 
-    result = process.DecodeAudio(audio_file)
-    main(result)
-
-
+    pass
 
